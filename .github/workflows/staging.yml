@@ -32,6 +32,8 @@ jobs:
       - run: yarn run download-data
       - run: yarn run test
       - run: yarn run generate:dev --fail-on-page-error
+        env:
+          - GOOGLE_ANALYTICS_ID: {{ secrets.STAGING_GOOGLE_ANALYTICS_ID }}
       - run: "echo \"User-agent: *\nDisallow: /\" > ./dist/robots.txt"
 
       - name: upload
