@@ -1,0 +1,50 @@
+name: staging
+
+on:
+  push:
+    tags:
+      - staging*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn run download-data
+      - run: yarn run test
+      - run: yarn run generate:dev --fail-on-page-error
+      - run: "echo \"User-agent: *\nDisallow: /\" > ./dist/robots.txt"
+
+      - name: upload
+        uses: mm0202/action_ftp@master
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          user: ${{ secrets.FTP_USER }}
+          pw: ${{ secrets.FTP_PW }}
+          localDir: "dist"
+          remoteDir: "app/covid19/staging"
+
+      - name: notify to slack
+        uses: mm0202/action_slack-notify@master
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
