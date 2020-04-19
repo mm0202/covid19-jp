@@ -1,5 +1,4 @@
 import * as _ from 'lodash'
-import { Field } from '~/packages/extensions/Domain/DataManager/_JgJpnDataManager'
 
 export default class DataManager {
   protected readonly initialData: any
@@ -25,7 +24,7 @@ export default class DataManager {
     return this
   }
 
-  filterByArray(key: Field, values: string[]): DataManager {
+  filterByArray(key: string, values: string[]): DataManager {
     this.data = _.filter(this.data, (datum: any) => values.includes(datum[key]))
     return this
   }

@@ -5,6 +5,8 @@ on:
     tags-ignore:
       - staging*
       - production*
+    branches:
+      - '*'
 
 jobs:
   build:
