@@ -1,4 +1,4 @@
-import Cache from './Cache'
+import CacheForPage from './CacheForPage'
 
 describe('Cacheクラスのテスト', () => {
   const key1 = 'test1'
@@ -8,30 +8,30 @@ describe('Cacheクラスのテスト', () => {
 
   beforeEach(() => {
     // キャッシュの初期化
-    Cache.list = {}
+    CacheForPage.list = {}
   })
 
   test('データ追加に成功', () => {
-    Cache.add(key1, data1)
-    expect(Cache.size()).toBe(1)
+    CacheForPage.add(key1, data1)
+    expect(CacheForPage.size()).toBe(1)
 
-    Cache.add(key2, data2)
-    expect(Cache.size()).toBe(2)
+    CacheForPage.add(key2, data2)
+    expect(CacheForPage.size()).toBe(2)
   })
 
   describe('初期データ付きテスト', () => {
     beforeEach(() => {
-      Cache.add(key1, data1)
-      Cache.add(key2, data2)
+      CacheForPage.add(key1, data1)
+      CacheForPage.add(key2, data2)
     })
     test('データリセットに成功', () => {
-      Cache.reset()
-      expect(Cache.size()).toBe(0)
+      CacheForPage.reset()
+      expect(CacheForPage.size()).toBe(0)
     })
 
     test('データ取得に成功', () => {
-      expect(Cache.get(key1)).toEqual(data1)
-      expect(Cache.get(key2)).toEqual(data2)
+      expect(CacheForPage.get(key1)).toEqual(data1)
+      expect(CacheForPage.get(key2)).toEqual(data2)
     })
   })
 })

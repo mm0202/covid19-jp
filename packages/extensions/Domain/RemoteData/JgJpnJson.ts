@@ -1,6 +1,6 @@
-import RemoteData from './RemoteData'
+import RemoteFile from './RemoteFile'
 
-export default class JgJpnJson extends RemoteData {
+export default class JgJpnJson extends RemoteFile {
   static URL = '/data/jg-jpn.json'
 
   constructor() {

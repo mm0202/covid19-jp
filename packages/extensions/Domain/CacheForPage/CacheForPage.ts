@@ -1,19 +1,19 @@
-export default class Cache {
+export default class CacheForPage {
   static list: { [key: string]: any } = {}
 
   static size(): any {
-    return Object.keys(Cache.list).length
+    return Object.keys(CacheForPage.list).length
   }
 
   static add(key: string, data: any): void {
-    Cache.list[key] = data
+    CacheForPage.list[key] = data
   }
 
   static get(key: string): any {
-    return Cache.list[key]
+    return CacheForPage.list[key]
   }
 
   static reset() {
-    Cache.list = {}
+    CacheForPage.list = {}
   }
 }

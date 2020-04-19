@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
-import Cache from '@/packages/extensions/Domain/Cache/Cache'
+import Cache from '@/packages/extensions/Domain/CacheForPage/CacheForPage'
 
-export default class RemoteData {
+export default class RemoteFile {
   private cacheKey = this.constructor.name + '/' + this.url
 
   constructor(private readonly url: string) {}
