@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import Utils from '~/packages/utils/Utils'
 import JgJpnDataManager from '~/packages/extensions/Domain/DataManager/JgJpnDataManager'
-import JgJpnJson from '~/packages/extensions/Domain/RemoteData/JgJpnJson'
+import JgJpnJson from '~/packages/extensions/Domain/RemoteFile/JgJpnJson'
 
 export type JgJpnState = {
   manager: JgJpnDataManager | {}
