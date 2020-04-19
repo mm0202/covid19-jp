@@ -1,12 +1,12 @@
 import * as _ from 'lodash'
-import DataManager from './DataManager'
+import { DataManager } from '@mm0202/data-manager'
 import {
   Field,
   FieldOfCumulative,
   FieldOfDate,
   FieldOfDateForCumulative
 } from '@/packages/extensions/Domain/DataManager/_JgJpnDataManager'
-import JgJpnJson from '@/packages/extensions/Domain/RemoteData/JgJpnJson'
+import JgJpnJson from '@/packages/extensions/Domain/RemoteFile/JgJpnJson'
 
 export interface HeaderForTableData {
   value: Field
