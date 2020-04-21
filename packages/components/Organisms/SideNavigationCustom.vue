@@ -173,7 +173,12 @@ export default Vue.extend({
         },
         {
           title: '新型コロナウイルス感染 世界マップ',
-          link: 'https://vdata.nikkei.com/newsgraphics/coronavirus-world-map/'
+          link: 'https://vdata.nikkei.com/newsgraphics/coronavirus-world-map/',
+          divider: true
+        },
+        {
+          title: this.$t('当サイトについて'),
+          link: this.localePath('/about')
         }
       ]
     }
