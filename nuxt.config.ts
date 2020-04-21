@@ -15,7 +15,7 @@ const config: Configuration = {
     htmlAttrs: {
       prefix: 'og: http://ogp.me/ns#'
     },
-    titleTemplate: '%s | 新型コロナウイルス感染症対策サイト 全国版',
+    titleTemplate: '%s | 新型コロナウイルス感染症対策サイト 全国版(非公式)',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -161,7 +161,7 @@ const config: Configuration = {
     // hardSource: process.env.NODE_ENV === 'development'
   },
   manifest: {
-    name: '新型コロナウイルス感染症対策サイト 全国版',
+    name: '新型コロナウイルス感染症対策サイト 全国版(非公式)',
     theme_color: '#00a040',
     background_color: '#ffffff',
     display: 'standalone',
