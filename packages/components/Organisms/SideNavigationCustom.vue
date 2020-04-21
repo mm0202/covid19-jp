@@ -46,52 +46,52 @@
       </nav>
 
       <footer class="SideNavigation-Footer">
-        <!--                <div class="SideNavigation-Social">-->
-        <!--                    <a-->
-        <!--                            href="https://line.me/R/ti/p/%40822sysfc"-->
-        <!--                            target="_blank"-->
-        <!--                            rel="noopener"-->
-        <!--                            class="SideNavigation-SocialLink"-->
-        <!--                    >-->
-        <!--                        <picture>-->
-        <!--                            <source srcset="/line.webp" type="image/webp"/>-->
-        <!--                            <img src="/line.png" alt="LINE"/>-->
-        <!--                        </picture>-->
-        <!--                    </a>-->
-        <!--                    <a-->
-        <!--                            href="https://twitter.com/tokyo_bousai"-->
-        <!--                            target="_blank"-->
-        <!--                            rel="noopener"-->
-        <!--                            class="SideNavigation-SocialLink"-->
-        <!--                    >-->
-        <!--                        <picture>-->
-        <!--                            <source srcset="/twitter.webp" type="image/webp"/>-->
-        <!--                            <img src="/twitter.png" alt="Twitter"/>-->
-        <!--                        </picture>-->
-        <!--                    </a>-->
-        <!--                    <a-->
-        <!--                            href="https://www.facebook.com/tochokoho"-->
-        <!--                            target="_blank"-->
-        <!--                            rel="noopener"-->
-        <!--                            class="SideNavigation-SocialLink"-->
-        <!--                    >-->
-        <!--                        <picture>-->
-        <!--                            <source srcset="/facebook.webp" type="image/webp"/>-->
-        <!--                            <img src="/facebook.png" alt="Facebook"/>-->
-        <!--                        </picture>-->
-        <!--                    </a>-->
-        <!--                    <a-->
-        <!--                            href="https://github.com/tokyo-metropolitan-gov/covid19"-->
-        <!--                            target="_blank"-->
-        <!--                            rel="noopener"-->
-        <!--                            class="SideNavigation-SocialLink"-->
-        <!--                    >-->
-        <!--                        <picture>-->
-        <!--                            <source srcset="/github.webp" type="image/webp"/>-->
-        <!--                            <img src="/github.png" alt="GitHub"/>-->
-        <!--                        </picture>-->
-        <!--                    </a>-->
-        <!--                </div>-->
+        <div class="SideNavigation-Social">
+          <!--                    <a-->
+          <!--                            href="https://line.me/R/ti/p/%40822sysfc"-->
+          <!--                            target="_blank"-->
+          <!--                            rel="noopener"-->
+          <!--                            class="SideNavigation-SocialLink"-->
+          <!--                    >-->
+          <!--                        <picture>-->
+          <!--                            <source srcset="/line.webp" type="image/webp"/>-->
+          <!--                            <img src="/line.png" alt="LINE"/>-->
+          <!--                        </picture>-->
+          <!--                    </a>-->
+          <a
+            href="https://twitter.com/JpCovid19"
+            target="_blank"
+            rel="noopener"
+            class="SideNavigation-SocialLink"
+          >
+            <picture>
+              <source srcset="/twitter.webp" type="image/webp" />
+              <img src="/twitter.png" alt="Twitter" />
+            </picture>
+          </a>
+          <!--                    <a-->
+          <!--                            href="https://www.facebook.com/tochokoho"-->
+          <!--                            target="_blank"-->
+          <!--                            rel="noopener"-->
+          <!--                            class="SideNavigation-SocialLink"-->
+          <!--                    >-->
+          <!--                        <picture>-->
+          <!--                            <source srcset="/facebook.webp" type="image/webp"/>-->
+          <!--                            <img src="/facebook.png" alt="Facebook"/>-->
+          <!--                        </picture>-->
+          <!--                    </a>-->
+          <a
+            href="https://github.com/mm0202/covid19-jp"
+            target="_blank"
+            rel="noopener"
+            class="SideNavigation-SocialLink"
+          >
+            <picture>
+              <source srcset="/github.webp" type="image/webp" />
+              <img src="/github.png" alt="GitHub" />
+            </picture>
+          </a>
+        </div>
         <!--        <small class="SideNavigation-Copyright">-->
         <!--          {{ $t('このサイトの内容物は') }}-->
         <!--          <a-->
@@ -173,7 +173,12 @@ export default Vue.extend({
         },
         {
           title: '新型コロナウイルス感染 世界マップ',
-          link: 'https://vdata.nikkei.com/newsgraphics/coronavirus-world-map/'
+          link: 'https://vdata.nikkei.com/newsgraphics/coronavirus-world-map/',
+          divider: true
+        },
+        {
+          title: this.$t('当サイトについて'),
+          link: this.localePath('/about')
         }
       ]
     }
