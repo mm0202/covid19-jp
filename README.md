@@ -1,7 +1,7 @@
 ![production](https://github.com/mm0202/covid19-jp/workflows/production/badge.svg)
 
-# 新型コロナウイルス感染症対策サイト 全国版
-[![新型コロナウイルス感染症対策サイト 全国版](static/covid19-jp.png)](https://covid19.wlaboratory.com)
+# 新型コロナウイルス感染症対策サイト 全国版(非公式)
+[![新型コロナウイルス感染症対策サイト 全国版(非公式)](static/covid19-jp.png)](https://covid19.wlaboratory.com)
 
 ## ライセンス
 本ソフトウェアは、[MITライセンス](./LICENSE.txt)の元提供されています。
