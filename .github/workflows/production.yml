@@ -1,9 +1,9 @@
-name: production
+name: staging
 
 on:
   push:
-    branches:
-      - production
+    tags:
+      - staging*
 
 jobs:
   build:
@@ -31,27 +31,22 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn run download-data
       - run: yarn run test
-      - run: yarn run generate:deploy --fail-on-page-error
+      - run: yarn run generate:dev --fail-on-page-error
         env:
-          GOOGLE_ANALYTICS_ID: ${{ secrets.PRODUCTION_GOOGLE_ANALYTICS_ID }}
+          GOOGLE_ANALYTICS_ID: ${{ secrets.STAGING_GOOGLE_ANALYTICS_ID }}
       - run: "echo \"User-agent: *\nDisallow: /\" > ./dist/robots.txt"
 
-      - name: checkout branch for publish
-        run: git checkout -b production-public
-
-      - name: Commit files
-        run: |
-          echo ${{ github.ref }}
-          git add dist
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -m "ci: Automated build push" | exit 0
-      - name: push
-        run: git push "https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git" --follow-tags -f | exit 0
+      - name: upload
+        uses: mm0202/action_ftp@master
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          user: ${{ secrets.FTP_USER }}
+          pw: ${{ secrets.FTP_PW }}
+          localDir: "dist"
+          remoteDir: "app/covid19/staging"
 
       - name: notify to slack
         uses: mm0202/action_slack-notify@master
         if: always()
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
