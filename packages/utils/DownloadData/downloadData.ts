@@ -7,7 +7,7 @@ class Main {
 
   async execute() {
     await new Download(
-      'https://covid19-data-2.wlaboratory.com/jg-jpn.json',
+      'https://covid19-data.wlaboratory.com/jg-jpn.json',
       'jg-jpn.json'
     ).download()
   }
