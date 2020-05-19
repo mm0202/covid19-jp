@@ -1,9 +1,9 @@
-name: staging
+name: production
 
 on:
   push:
     tags:
-      - staging*
+      - production*
 
 jobs:
   build:
@@ -31,9 +31,9 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn run download-data
       - run: yarn run test
-      - run: yarn run generate:dev --fail-on-page-error
+      - run: yarn run generate:deploy --fail-on-page-error
         env:
-          GOOGLE_ANALYTICS_ID: ${{ secrets.STAGING_GOOGLE_ANALYTICS_ID }}
+          GOOGLE_ANALYTICS_ID: ${{ secrets.PRODUCTION_GOOGLE_ANALYTICS_ID }}
       - run: "echo \"User-agent: *\nDisallow: /\" > ./dist/robots.txt"
 
       - name: upload
@@ -43,7 +43,7 @@ jobs:
           user: ${{ secrets.FTP_USER }}
           pw: ${{ secrets.FTP_PW }}
           localDir: "dist"
-          remoteDir: "app/covid19/staging"
+          remoteDir: "app/covid19/production"
 
       - name: notify to slack
         uses: mm0202/action_slack-notify@master
