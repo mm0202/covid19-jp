@@ -2,13 +2,14 @@ import _ from 'lodash'
 import JgJpnDataManager, {
   HeaderForTableData
 } from '@/packages/extensions/Domain/DataManager/JgJpnDataManager'
-import jgJpnJson from '@/static/data/jg-jpn.json'
+// import jgJpnJson from '@/static/data/jg-jpn.json'
 
 describe('JgJpnDataManagerクラスのテスト', () => {
   let dataManager: JgJpnDataManager
 
   beforeEach(() => {
-    dataManager = new JgJpnDataManager(jgJpnJson)
+    dataManager = new JgJpnDataManager()
+    // dataManager = new JgJpnDataManager(jgJpnJson)
   })
 
   describe('累計データのグラフ用データの生成', () => {
@@ -91,11 +92,11 @@ describe('JgJpnDataManagerクラスのテスト', () => {
 
   describe('テーブル用データの生成', () => {
     const headers: HeaderForTableData[] = [
-      { value: '確定日', formatType: 'date', primary: true },
-      { value: '居住都道府県' },
-      { value: '居住市区町村' },
-      { value: '年代', formatType: 'age' },
-      { value: '性別', text: 'テスト用追加キー', align: 'テスト用追加キー' }
+      {value: '確定日', formatType: 'date', primary: true},
+      {value: '居住都道府県'},
+      {value: '居住市区町村'},
+      {value: '年代', formatType: 'age'},
+      {value: '性別', text: 'テスト用追加キー', align: 'テスト用追加キー'}
     ]
     const dateFormat = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])$/
 
@@ -133,7 +134,8 @@ describe('JgJpnDataManagerクラスのテスト', () => {
           '80代',
           '90代',
           '100代',
-          '不明'
+          '不明',
+          ''
         ]).toContain(actualDatum.年代)
         expect(['男性', '女性', '不明']).toContain(actualDatum.性別)
       })
