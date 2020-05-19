@@ -134,7 +134,8 @@ describe('JgJpnDataManagerクラスのテスト', () => {
           '80代',
           '90代',
           '100代',
-          '不明'
+          '不明',
+          ''
         ]).toContain(actualDatum.年代)
         expect(['男性', '女性', '不明']).toContain(actualDatum.性別)
       })
