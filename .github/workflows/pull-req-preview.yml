@@ -1,12 +1,12 @@
-name: staging
+name: pull-req-preview
 
 on:
-  push:
+  pull_request:
     branches:
       - staging
 
 jobs:
-  build:
+  pull-req-preview:
     runs-on: ubuntu-latest
 
     strategy:
@@ -37,7 +37,7 @@ jobs:
       - run: "echo \"User-agent: *\nDisallow: /\" > ./dist/robots.txt"
 
       - name: checkout branch for publish
-        run: git checkout -b staging-public
+        run: git checkout -b pull-req-preview-public
 
       - name: Commit files
         run: |

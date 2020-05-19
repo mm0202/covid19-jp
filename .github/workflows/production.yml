@@ -2,8 +2,8 @@ name: production
 
 on:
   push:
-    tags:
-      - production*
+    branches:
+      - production
 
 jobs:
   build:
@@ -36,14 +36,18 @@ jobs:
           GOOGLE_ANALYTICS_ID: ${{ secrets.PRODUCTION_GOOGLE_ANALYTICS_ID }}
       - run: "echo \"User-agent: *\nDisallow: /\" > ./dist/robots.txt"
 
-      - name: upload
-        uses: mm0202/action_ftp@master
-        with:
-          host: ${{ secrets.FTP_HOST }}
-          user: ${{ secrets.FTP_USER }}
-          pw: ${{ secrets.FTP_PW }}
-          localDir: "dist"
-          remoteDir: "app/covid19/production"
+      - name: checkout branch for publish
+        run: git checkout -b production-public
+
+      - name: Commit files
+        run: |
+          echo ${{ github.ref }}
+          git add dist
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "ci: Automated build push" | exit 0
+      - name: push
+        run: git push "https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git" --follow-tags -f | exit 0
 
       - name: notify to slack
         uses: mm0202/action_slack-notify@master
