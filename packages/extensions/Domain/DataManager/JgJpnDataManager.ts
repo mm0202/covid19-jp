@@ -1,12 +1,13 @@
 import * as _ from 'lodash'
-import { DataManager } from '@mm0202/data-manager'
+import {DataManager} from '@mm0202/data-manager'
 import {
   Field,
   FieldOfCumulative,
   FieldOfDate,
   FieldOfDateForCumulative
 } from '@/packages/extensions/Domain/DataManager/_JgJpnDataManager'
-import JgJpnJson from '@/packages/extensions/Domain/RemoteFile/JgJpnJson'
+// import JgJpnJson from '@/packages/extensions/Domain/RemoteFile/JgJpnJson'
+import data from '@/static/data/jg-jpn.json'
 
 export interface HeaderForTableData {
   value: Field
@@ -17,9 +18,10 @@ export interface HeaderForTableData {
 }
 
 export default class JgJpnDataManager extends DataManager {
-  constructor(data?: any) {
-    const jgJpnJson = new JgJpnJson()
-    super(data || jgJpnJson.getFromCache().response.data)
+  constructor() {
+    // const jgJpnJson = new JgJpnJson()
+    super(data)
+    // super(data || jgJpnJson.getFromCache().response.data)
   }
 
   filter(key: Field, value: string): JgJpnDataManager {
