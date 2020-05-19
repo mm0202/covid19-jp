@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import Utils from '~/packages/utils/Utils'
 import JgJpnDataManager from '~/packages/extensions/Domain/DataManager/JgJpnDataManager'
-import JgJpnJson from '~/packages/extensions/Domain/RemoteFile/JgJpnJson'
+// import JgJpnJson from '~/packages/extensions/Domain/RemoteFile/JgJpnJson'
 
 export type JgJpnState = {
   manager: JgJpnDataManager | {}
@@ -32,10 +32,11 @@ export const mutations = {
 }
 
 export const actions = {
-  async LOAD_DATA({ commit }: any) {
-    const jgJpnJson = new JgJpnJson()
-    const result = await jgJpnJson.get()
-    const jgJpnDataManager = new JgJpnDataManager(result.response.data)
+  LOAD_DATA({ commit }: any) {
+    // const jgJpnJson = new JgJpnJson()
+    // const result = await jgJpnJson.get()
+    // const jgJpnDataManager = new JgJpnDataManager(result.response.data)
+    const jgJpnDataManager = new JgJpnDataManager()
     commit('setDataManager', jgJpnDataManager)
 
     commit('setLoaded', true)
