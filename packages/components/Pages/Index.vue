@@ -19,7 +19,8 @@
     <!--                :text="$t('自分や家族の症状に不安や心配があればまずは電話相談をどうぞ')"-->
     <!--                :btn-text="$t('相談の手順を見る')"-->
     <!--        />-->
-    <FilterBlock v-if="!isMobile.any" class="filter-block" />
+    <FilterBlock />
+    <!--    <FilterBlock v-if="!isMobile.any" class="filter-block" />-->
     <DataBlock />
   </div>
 </template>
