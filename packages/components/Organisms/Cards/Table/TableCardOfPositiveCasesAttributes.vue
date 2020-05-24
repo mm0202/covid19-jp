@@ -36,7 +36,7 @@ export default {
       const headers = [
         { text: '確定日', value: '確定日', formatType: 'date', primary: true },
         { text: '居住都道府県', value: '居住都道府県' },
-        { text: '居住市区町村', value: '居住市区町村' },
+        // { text: '居住市区町村', value: '居住市区町村' },
         { text: '年代', value: '年代', formatType: 'age' },
         { text: '性別', value: '性別' }
       ]

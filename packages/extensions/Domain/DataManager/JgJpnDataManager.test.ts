@@ -37,7 +37,7 @@ describe('JgJpnDataManagerクラスのテスト', () => {
         expect(keys).toContain('小計')
         const subtotal = actualDatum.小計
         expect(typeof subtotal).toBe('number')
-        expect(subtotal).toBeLessThan(64387)
+        expect(subtotal).toBeLessThan(270000)
 
         expect(keys).toContain('日付')
         const date = actualDatum.日付
@@ -63,16 +63,17 @@ describe('JgJpnDataManagerクラスのテスト', () => {
     })
 
     test('日付キーの指定チェック', () => {
+      // eslint-disable-next-line
       const actualData: any[] = dataManager.createGraphDataByCumulative(
         'PCR検査実施人数',
         '確定日'
       )
 
-      const actualData2: any[] = dataManager.createGraphDataByCumulative(
-        'PCR検査実施人数',
-        '確定日YYYYMMDD'
-      )
-      expect(actualData2.length).toBe(actualData.length)
+      // const actualData2: any[] = dataManager.createGraphDataByCumulative(
+      //   'PCR検査実施人数',
+      //   '確定日YYYYMMDD'
+      // )
+      // expect(actualData2.length).toBe(actualData.length)
     })
 
     test('累計キーの違いで結果が異なる', () => {
@@ -120,7 +121,7 @@ describe('JgJpnDataManagerクラスのテスト', () => {
 
         expect(actualDatum.確定日).toMatch(dateFormat)
         expect(typeof actualDatum.居住都道府県).toBe('string')
-        expect(typeof actualDatum.居住市区町村).toBe('string')
+        // expect(typeof actualDatum.居住市区町村).toBe('string')
         expect([
           '10歳未満',
           '10代',
@@ -134,7 +135,8 @@ describe('JgJpnDataManagerクラスのテスト', () => {
           '90代',
           '100代',
           '不明',
-          ''
+          '',
+          undefined
         ]).toContain(actualDatum.年代)
         expect(['男性', '女性', '不明']).toContain(actualDatum.性別)
       })
@@ -154,9 +156,9 @@ describe('JgJpnDataManagerクラスのテスト', () => {
     test('primaryキーチェック', () => {
       const actualData: any[] = dataManager.createTableData(headers)
 
-      headers[0].value = '確定日YYYYMMDD'
-      const actualData2: any[] = dataManager.createTableData(headers)
-      expect(actualData2.length).toBe(actualData.length)
+      // headers[0].value = '確定日YYYYMMDD'
+      // const actualData2: any[] = dataManager.createTableData(headers)
+      // expect(actualData2.length).toBe(actualData.length)
 
       headers[0].value = '発症日'
       const actualData3: any[] = dataManager.createTableData(headers)
@@ -203,8 +205,8 @@ describe('JgJpnDataManagerクラスのテスト', () => {
     test('日付キーの指定チェック', () => {
       const actualData: any[] = dataManager.createGraphData('確定日')
 
-      const actualData2: any[] = dataManager.createGraphData('確定日YYYYMMDD')
-      expect(actualData2.length).toBe(actualData.length)
+      // const actualData2: any[] = dataManager.createGraphData('確定日YYYYMMDD')
+      // expect(actualData2.length).toBe(actualData.length)
 
       const actualData3: any[] = dataManager.createGraphData('発症日')
       expect(actualData3.length).not.toBe(actualData.length)
